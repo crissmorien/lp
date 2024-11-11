@@ -1,0 +1,46 @@
+ML-1
+import pandas as pd
+import numpy as np
+import matplotlib
+
+df=pd.read_csv('Heart.csv')
+df.head()
+
+df.shape
+
+df.isnull().sum()
+
+df.dtypes
+
+df[df==0].count()
+
+df['Age'].mean()
+
+df[['Age','Sex','ChestPain','Chol']]
+
+import sklearn
+
+from sklearn.model_selection import train_test_split
+
+train,test=train_test_split(df,random_state=0,test_size=0.25)
+
+train.shape
+
+test.shape
+
+actual=list(np.ones(45))+list(np.zeros(55))
+np.array(actual)
+
+predicted=list(np.ones(50))+list(np.zeros(44))+list(np.ones(6))
+np.array(predicted)
+
+from sklearn.metrics import ConfusionMatrixDisplay
+
+ConfusionMatrixDisplay.from_predictions(actual,predicted)
+
+from sklearn.metrics import classification_report
+
+print(classification_report(actual,predicted))
+
+from sklearn.metrics import accuracy_score
+accuracy_score(actual,predicted)
